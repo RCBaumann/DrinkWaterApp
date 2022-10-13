@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DrinkWaterApp</string>
+    <string name="hint_peso">Seu peso (KG)</string>
+    <string name="hint_idade">Sua idade</string>
+    <string name="txt_btn_calc">Calcular consumo diário</string>
+    <string name="txt_resultado_ml"></string>
+    <string name="txt_btn_lembrete">Lembrete</string>
+    <string name="txt_btn_alarme">Alarme</string>
+    <string name="txt_hora">00</string>
+    <string name="txt_dois_pontos">:</string>
+    <string name="txt_minutos">00</string>
+</resources>
