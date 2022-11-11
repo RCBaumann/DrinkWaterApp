@@ -9,4 +9,8 @@
     <string name="txt_hora">00</string>
     <string name="txt_dois_pontos">:</string>
     <string name="txt_minutos">00</string>
+    <string name="toast_informe_peso">Informe seu peso!</string>]
+    <string name="toast_informe_idade">Informe sua idade!</string>
+    <string name="dialog_title">Redefinir Dados?</string>
+    <string name="dialog_message">Deseja excluir todos os dados existentes?</string>
 </resources>

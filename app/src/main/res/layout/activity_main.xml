@@ -33,7 +33,7 @@
         />
 
     <ImageView
-        android:id="@+id/ic_redefinir"
+        android:id="@+id/btn_redefinir"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/ic_refresh"
@@ -44,7 +44,7 @@
         />
 
     <EditText
-        android:id="@+id/txt_peso"
+        android:id="@+id/et_peso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/hint_peso"
@@ -63,7 +63,7 @@
         />
 
     <EditText
-        android:id="@+id/txt_idade"
+        android:id="@+id/et_idade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/hint_idade"
@@ -71,7 +71,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"
         app:layout_constraintTop_toBottomOf="@id/container_header"
-        app:layout_constraintStart_toEndOf="@id/txt_peso"
+        app:layout_constraintStart_toEndOf="@id/et_peso"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="15dp"
         android:textColor="@android:color/holo_blue_dark"
@@ -86,7 +86,7 @@
         android:id="@+id/btn_calcular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/txt_peso"
+        app:layout_constraintTop_toBottomOf="@id/et_peso"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="20dp"
@@ -113,10 +113,9 @@
         />
 
     <TextView
-        android:id="@+id/txt_resultado_ml"
+        android:id="@+id/tv_resultadoMl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="123456"
         app:layout_constraintTop_toTopOf="@id/container_resultado_ml"
         app:layout_constraintStart_toStartOf="@id/container_resultado_ml"
         app:layout_constraintEnd_toEndOf="@id/container_resultado_ml"
