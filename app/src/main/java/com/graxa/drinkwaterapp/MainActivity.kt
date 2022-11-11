@@ -1,13 +1,12 @@
 package com.graxa.drinkwaterapp
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.TimePickerDialog
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.provider.AlarmClock
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.graxa.drinkwaterapp.Model.CalcularIngestaoDiaria
 import java.text.NumberFormat
 import java.util.*
@@ -19,9 +18,20 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btn_calcular: Button
     private lateinit var tv_resultadoMl: TextView
     private lateinit var btn_redefinir: ImageView
+    private lateinit var btn_lembrete: Button
+    private lateinit var btn_alarme: Button
+    private lateinit var tv_hora: TextView
+    private lateinit var tv_minutos: TextView
 
     private lateinit var calcularIngestaoDiaria: CalcularIngestaoDiaria
     private var resultadoMl = 0.0
+
+    lateinit var timePickerDialog: TimePickerDialog
+    lateinit var calendario: Calendar
+    var horaAtual = 0
+    var minutoAtual = 0
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +72,33 @@ class MainActivity : AppCompatActivity() {
             dialog.show()
         }
 
+        btn_lembrete.setOnClickListener(){
+            calendario = Calendar.getInstance()
+            horaAtual = calendario.get(Calendar.HOUR_OF_DAY)
+            minutoAtual = calendario.get(Calendar.MINUTE)
+            timePickerDialog = TimePickerDialog(this,{timePicker: TimePicker, hourOfDay: Int, minutes: Int ->
+                tv_hora.text = String.format("%02d", hourOfDay)
+                tv_minutos.text = String.format("%02d", minutes)
+            },horaAtual,minutoAtual,true)
+            timePickerDialog.show()
+        }
+
+        btn_alarme.setOnClickListener(){
+            if(!tv_hora.text.toString().isEmpty() && !tv_minutos.text.toString().isEmpty()){
+                val intent = Intent(AlarmClock.ACTION_SET_ALARM)
+                intent.putExtra(AlarmClock.EXTRA_HOUR, tv_hora.text.toString().toInt())
+                intent.putExtra(AlarmClock.EXTRA_MINUTES, tv_minutos.text.toString().toInt())
+                intent.putExtra(AlarmClock.EXTRA_MESSAGE,getString(R.string.alarme_messge))
+                startActivity(intent)
+
+                if(intent.resolveActivity(packageManager) != null){
+                    startActivity(intent)
+                }else {
+                    Toast.makeText(this,"Ajuste as configurações de Data e Hora para o formato 24hrs",Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+
     }
 
     private fun iniciarComponentes(){
@@ -70,6 +107,10 @@ class MainActivity : AppCompatActivity() {
         btn_calcular = findViewById(R.id.btn_calcular)
         tv_resultadoMl = findViewById(R.id.tv_resultadoMl)
         btn_redefinir = findViewById(R.id.btn_redefinir)
+        btn_lembrete = findViewById(R.id.btn_lembrete)
+        btn_alarme = findViewById(R.id.btn_alarme)
+        tv_hora = findViewById(R.id.txt_hora)
+        tv_minutos = findViewById(R.id.txt_minutos)
 
     }
 }
